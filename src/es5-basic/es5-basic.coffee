@@ -108,7 +108,7 @@ if not Array.prototype.indexOf
 
 if not Array.prototype.lastIndexOf
     Array.prototype.lastIndexOf = (value) ->
-        i = arguments[1] || @length
+        i = arguments[1] or @length
         i += length if i < 0
         i = Math.min(i, @length - 1)
 
