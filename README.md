@@ -2,8 +2,7 @@ ES5-Basic
 =========
 
 This library provides some basic shim methods to make older browsers more
-ECMAScript 5 compatible. All the methods in this module should match the
-behavior of the specification. For newer browsers, the built-in methods will
+ECMAScript 5 compatible. For newer browsers, the built-in methods will
 be used.
 
 
@@ -33,5 +32,4 @@ Acknowledgements
 This module is modeled after the great
 [es5-shim module](https://github.com/kriskowal/es5-shim). If you're looking
 for a shim module that has greater completeness at the cost of larger code
-size and some methods that can't be implemented to match the spec, then
-es5-shim is what you should get.
+size go for es5-shim.
