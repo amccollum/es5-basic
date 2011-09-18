@@ -38,21 +38,21 @@ if not Array.prototype.map
     Array.prototype.map = (fn, that) -> (fn.call(that, val, i, this) for val, i in this when i of this)
     
 if not Array.prototype.filter
-    Array.prototype.filter = (fn, that) -> (val for val, i in this when i of this and fn.call(that, val))
+    Array.prototype.filter = (fn, that) -> (val for val, i in this when i of this and fn.call(that, val, i, this))
     
+if not Array.prototype.some
+    Array.prototype.some = (fn, that) ->
+        for val, i in this
+            if i of this
+                if fn.call(that, val, i, this)
+                    return true
+        return false
+
 if not Array.prototype.every
     Array.prototype.every = (fn, that) ->
         for val, i in this
             if i of this
-                if not fn.call(that, val)
-                    return false 
-        return true
-
-if not Array.prototype.some
-    Array.prototype.some = (fn, that) ->
-        for val in this
-            if i of this
-                if fn.call(that, val)
+                if not fn.call(that, val, i, this)
                     return false 
         return true
 
@@ -94,17 +94,17 @@ if not Array.prototype.reduceRight
     
 if not Array.prototype.indexOf
     Array.prototype.indexOf = (value) ->
-            i = arguments[1] ? 0
-            i += length if i < 0
-            i = Math.max(i, 0)
-        
-            while i < @length
-                if i of this
-                    if this[i] == value
-                        return i
-                i++
+        i = arguments[1] ? 0
+        i += length if i < 0
+        i = Math.max(i, 0)
+    
+        while i < @length
+            if i of this
+                if this[i] == value
+                    return i
+            i++
 
-            return -1
+        return -1
 
 if not Array.prototype.lastIndexOf
     Array.prototype.lastIndexOf = (value) ->
